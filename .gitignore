@@ -1,0 +1,6 @@
+test
+.import
+addons/*
+builds/*
+demo/*
+.txt

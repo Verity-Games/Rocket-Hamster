@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/plane.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/hamster.tscn" type="PackedScene" id=2]
+
+[node name="testing" type="Node2D"]
+
+[node name="plane" parent="." instance=ExtResource( 1 )]
+position = Vector2( 153, -76 )
+
+[node name="plane2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -314, -69 )
+
+[node name="hamster" parent="." instance=ExtResource( 2 )]
+position = Vector2( 27, 116 )

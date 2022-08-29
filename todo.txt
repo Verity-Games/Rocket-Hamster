@@ -1,0 +1,1 @@
+Fix achievements to give correct achievement. ex. died and got flight achievement. FIX: make a firstTime like variable and make sure that it checks for true, if true then give achievement, then false.

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/plane.gd" type="Script" id=1]
+[ext_resource path="res://assets/art/plane.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 64, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 73.5, 96.7105 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 247.5, 96 )
+
+[node name="plane" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -9.53674e-07 )
+scale = Vector2( 9.1875, 9.1875 )
+frames = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.500038, -9.49999 )
+rotation = -1.5708
+scale = Vector2( 1, 2.28 )
+shape = SubResource( 1 )
+
+[node name="death" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
+position = Vector2( -0.5, -9 )
+shape = SubResource( 4 )
+
+[connection signal="body_entered" from="death" to="." method="_deathArea"]
