@@ -1,10 +1,10 @@
 # Rocket-Hamster
 
-## The world's FIRST flying hamster!
-### Navigate Gary through the trecherous skies, watch out for planes, Blobbles, and more!
+### The world's FIRST flying
+ Navigate Gary through the trecherous skies, watch out for planes, Blobbles, and more!
 
-## Brand new code!
-### The code for this game has been completely renewed, meaning better movement and a better scoring system!
+### Brand new code!
+ The code for this game has been completely renewed, meaning better movement and a better scoring system!
 
 ## To Do List:
  - [ ] Enemies
