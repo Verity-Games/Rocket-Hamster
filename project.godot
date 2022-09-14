@@ -120,7 +120,6 @@ config/windows_native_icon="res://ico.ico"
 
 HUD="*res://scenes/HUD.tscn"
 HamsterInfo="*res://scripts/HamsterInfo.gd"
-Achievements="*res://scenes/Achievements.tscn"
 Updater="*res://scenes/autoload default.tscn"
 
 [discord_presence]

@@ -121,7 +121,6 @@ centered = false
 position = Vector2( 241, 274 )
 scale = Vector2( 4.125, 4.125 )
 frames = ExtResource( 6 )
-frame = 1
 playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]

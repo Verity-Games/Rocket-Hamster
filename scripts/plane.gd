@@ -43,8 +43,8 @@ func _process(delta):
 
 func _deathArea(body:Node):
 	if body.get_name() == "hamster":
-		Updater.deathCause = "Plane"
-		Updater.updateCOD(Updater.deathCause)
+		#Updater.deathCause = "Plane"
+		#Updater.updateCOD(Updater.deathCause)
 		HamsterInfo.alive = false
 		#Achievements.giveAchievement("That Hurts!")
 		#Achievements.firstDeath = false
