@@ -1,1 +1,8 @@
-Fix achievements to give correct achievement. ex. died and got flight achievement. FIX: make a firstTime like variable and make sure that it checks for true, if true then give achievement, then false.
+Make Flying Blobbles follow the player if is in bounds. To kill? Unknow.
+Skins. ARTISTS GET ON IT
+	Secured custom skins:
+		- REDRATH
+Story Mode
+Power-Ups
+Link to Discord
+Settings Menu

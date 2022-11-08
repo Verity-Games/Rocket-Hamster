@@ -46,7 +46,7 @@ func change(var lean):
 		high = height
 
 func vis():
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.000000001), "timeout")
 	label.visible = true
 	retry.visible = false
 	main.visible = false
@@ -54,7 +54,7 @@ func vis():
 	died.visible = false
 
 func hid():
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.000000001), "timeout")
 	label.visible = false
 	retry.visible = false
 	main.visible = false

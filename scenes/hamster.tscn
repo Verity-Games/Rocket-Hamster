@@ -1,7 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/hamster.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/rocketHamster.png" type="Texture" id=2]
+[ext_resource path="res://assets/sounds/jetpack noises.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/wind.wav" type="AudioStream" id=4]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 2 )
@@ -67,7 +69,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=13]
-extents = Vector2( 18.5, 30 )
+extents = Vector2( 18.5, 31.75 )
 
 [node name="hamster" type="RigidBody2D"]
 gravity_scale = 3.0
@@ -80,7 +82,7 @@ animation = "stand still"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 1 )
+position = Vector2( 2, 0.25 )
 shape = SubResource( 13 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
@@ -99,7 +101,15 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 0, -3.5 )
-scale = Vector2( 2.5, 3.25 )
+position = Vector2( 4, 15.5 )
+scale = Vector2( 0.8, 0.75 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -16.606
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_exitCam"]
+[connection signal="finished" from="wind" to="." method="windFinished"]

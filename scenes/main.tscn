@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/hamster.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 162, 37.5 )
+extents = Vector2( 162, 26.5 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -144,11 +144,9 @@ tracks/1/keys = {
 [node name="main" type="Node2D" groups=["planes"]]
 script = ExtResource( 6 )
 
-[node name="hamster" parent="." instance=ExtResource( 7 )]
-position = Vector2( 212, 142 )
-
 [node name="platform" type="StaticBody2D" parent="."]
 position = Vector2( 214, 209 )
+collision_mask = 3
 __meta__ = {
 "_edit_group_": true
 }
@@ -157,11 +155,16 @@ __meta__ = {
 position = Vector2( 11, 46 )
 scale = Vector2( 6.75, 6.75 )
 frames = ExtResource( 1 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform"]
 position = Vector2( 4, -11.5 )
 shape = SubResource( 1 )
+
+[node name="hamster" parent="." instance=ExtResource( 7 )]
+position = Vector2( 214, 108 )
+collision_mask = 3
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

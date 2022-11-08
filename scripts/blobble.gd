@@ -6,8 +6,10 @@ onready var path = $Path2D/PathFollow2D
 var playbackSpeed = 1
 
 func _ready():
-    player.play()
+    #player.play()
+	pass
 
 func animationFinished(animName:String):
-    if animName == "hoer":
-        player.play("hoer")
+    #if animName == "hoer":
+    #    player.play("hoer")
+	pass

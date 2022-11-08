@@ -15,6 +15,8 @@ const FRIC = 750
 onready var sprite = $AnimatedSprite
 onready var cast = $RayCast2D
 onready var cam = $Camera2D
+onready var audio = $AudioStreamPlayer
+onready var wind = $wind
 
 func _ready():
 	HUD.height = 0
@@ -47,6 +49,10 @@ func _physics_process(delta):
 			sprite.flip_h = false
 		elif Input.get_action_strength("left") == 1:
 			sprite.flip_h = true
+		if Input.is_action_just_pressed("up") and audio.get_playback_position() < 6:
+			audio.play()
+		if audio.get_playback_position() > 6:
+			audio.play(0)
 	elif cast.is_colliding() and Input.get_action_strength("right") == 1:
 		sprite.play("walking")
 		sprite.flip_h = false
@@ -61,6 +67,7 @@ func _physics_process(delta):
 			sprite.flip_h = false
 		elif Input.get_action_strength("left") == 1:
 			sprite.flip_h = true
+		audio.stop()
 
 func _process(delta):
 	var last = pos
@@ -83,6 +90,8 @@ func _process(delta):
 	
 	if HamsterInfo.alive == false:
 		die()
+
+	wind()
 	#print(get_position())
 	#if HUD.height == 1000:
 	#	Achievements.giveAchievement("Lightheaded yet?")
@@ -103,6 +112,13 @@ func _process(delta):
 	#elif not firstFlight:
 	#	pass
 
+func wind():
+	if Input.is_action_just_released("up"):
+		wind.play(0)
+	if wind.get_playback_position() > 2:
+		wind.play(0)
+	else:
+		wind.stop()
 
 func _integrate_forces(state):
 	rotation_degrees = 0
@@ -115,3 +131,10 @@ func die():
 
 func _exitCam():
 	die()
+
+func windFinished():
+	if HUD.height > 100:
+		wind.play()
+
+func audioFinished() -> void:
+	audio.play()

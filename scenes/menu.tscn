@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/stars.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/themes/theme.tres" type="Theme" id=4]
 [ext_resource path="res://assets/font/doppio-one.regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://spriteFrames/platform.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://assets/art/discordLogo.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -44,6 +45,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("stars:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("clouds:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -85,10 +110,40 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 0, 720 ), Vector2( 0, 720 ), Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, 720 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("stars:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 5, 30, 35, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("clouds:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 5, 30, 35, 60 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="DynamicFont" id=3]
 size = 45
 outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 21
+outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
@@ -121,6 +176,7 @@ centered = false
 position = Vector2( 241, 274 )
 scale = Vector2( 4.125, 4.125 )
 frames = ExtResource( 6 )
+frame = 2
 playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -178,7 +234,35 @@ flat = true
 position = Vector2( 240, 360 )
 current = true
 
+[node name="music" type="AudioStreamPlayer" parent="."]
+
+[node name="discordLogo" type="Sprite" parent="."]
+modulate = Color( 0.698039, 0.698039, 0.698039, 1 )
+position = Vector2( 68, 51 )
+scale = Vector2( 0.147222, 0.147222 )
+texture = ExtResource( 7 )
+
+[node name="discord" type="Button" parent="."]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 134.0
+margin_bottom = 100.0
+focus_mode = 0
+enabled_focus_mode = 0
+flat = true
+
+[node name="version" type="Label" parent="."]
+margin_left = 365.0
+margin_top = 689.0
+margin_right = 476.0
+margin_bottom = 717.0
+custom_fonts/font = SubResource( 4 )
+text = "Version 2.0"
+
 [connection signal="animation_finished" from="nightDay" to="." method="onFinished"]
 [connection signal="pressed" from="play" to="." method="_onPlay"]
 [connection signal="pressed" from="settings" to="." method="_onSettings"]
 [connection signal="pressed" from="exit" to="." method="_onExit"]
+[connection signal="finished" from="music" to="." method="musicFinished"]
+[connection signal="button_up" from="discord" to="." method="discordNotPressed"]
+[connection signal="pressed" from="discord" to="." method="discordPressed"]
