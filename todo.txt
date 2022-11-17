@@ -1,8 +1,0 @@
-Make Flying Blobbles follow the player if is in bounds. To kill? Unknow.
-Skins. ARTISTS GET ON IT
-	Secured custom skins:
-		- REDRATH
-Story Mode
-Power-Ups
-Link to Discord
-Settings Menu
